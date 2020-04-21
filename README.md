@@ -1,1 +1,1 @@
-# COVID-19_Statistics_India_App
+CoronaVirus (COVID-19) Live Statistics Tracker India Android App
