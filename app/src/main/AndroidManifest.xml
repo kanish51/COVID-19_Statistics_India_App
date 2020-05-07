@@ -12,12 +12,14 @@
         android:roundIcon="@mipmap/mycustomicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DistrictDataActivity">
+        <activity android:name=".DistrictDataActivity"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StateDataActivity" />
         </activity>
-        <activity android:name=".StateDataActivity">
+        <activity android:name=".StateDataActivity"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
