@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import android.app.Activity;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainInfoContentCa
     ActionBar actionBar;
     RetrieveCovidData async;
     IMarker marker;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     @Override
@@ -70,7 +72,17 @@ public class MainActivity extends AppCompatActivity implements MainInfoContentCa
         layoutManager=new GridLayoutManager(MainActivity.this,2,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         marker = new MyGraphMarker(MainActivity.this,R.layout.marker_view);
+        mSwipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipeToRefresh);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         RefreshFunc();
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                RefreshFunc();
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
     }
     public void RefreshFunc()
